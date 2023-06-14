@@ -5,7 +5,7 @@ function addNumbers(x:number, y:number) {
 
   
 
-  //ENUM ------------------------->
+  //  enum ------------------------->
 
   enum ContractStatus {
     Permanent = 1,
@@ -17,3 +17,11 @@ function addNumbers(x:number, y:number) {
   console.log(employeeStatus);
   
   console.log(ContractStatus[employeeStatus]);
+
+
+
+
+  //  tuplas ---------------------->
+
+  let person1: [string, number] = ['Marcia', 35];
+  let person2: [string, number, boolean] = ['Marcia', 35, true];
