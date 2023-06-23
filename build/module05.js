@@ -3,7 +3,12 @@ class Car {
     constructor(make, color, doors = 4) {
         this._make = make;
         this._color = color;
-        this._doors = doors;
+        if ((doors % 2) === 0) {
+            this._doors = doors;
+        }
+        else {
+            throw new Error('Doors must be an even number');
+        }
     }
     // Accessors
     get make() {
@@ -45,3 +50,12 @@ class Car {
         return this._make;
     }
 }
+let myCar1 = new Car("Cool car company", "Blue", 2);
+// console.log(myCar1.color);
+// console.log(myCar1._color);
+// let myCar2 = new Car("Galaxy motors", "red", 3)
+// let myCar3 = new Car("Galaxy motors", "grey")
+// console.log(myCar3.doors);
+console.log(myCar1.accelerate(35));
+console.log(myCar1.brake());
+console.log(myCar1.turn('right'));
