@@ -76,6 +76,7 @@ class ElectricCar extends Car {
     charge() {
         console.log(this.worker() + " is charging.");
     }
+    // La funcion brake reemplaza a la funcion brake de la clase Car
     brake() {
         return `${this.worker()} is braking with the regenerative braking system.`;
     }

@@ -1,4 +1,13 @@
-class Car {
+interface Vehicle {
+    make: string;
+    color: string;
+    doors: number;
+    accelerate(speed: number): string;
+    brake(): string;
+    turn(direction: 'left' | 'right'): string;
+}
+
+class Car implements Vehicle {
     private static numberOfCars: number = 0;
     private _make: string;
     private _color: string;
@@ -77,25 +86,26 @@ class ElectricCar extends Car {
     private _range: number
 
     constructor(make: string, color: string, range: number, doors = 2) {
-    super(make, color, doors);
-    this._range = range;
-}
-get range() {
-    return this._range;
-}
-set range(range) {
-    this._range = range;
-}
-charge() {
-    console.log(this.worker() + " is charging.")
+        super(make, color, doors);
+        this._range = range;
+    }
+    get range() {
+        return this._range;
+    }
+    set range(range) {
+        this._range = range;
+    }
+    charge() {
+        console.log(this.worker() + " is charging.")
 
-}
-brake(): string {
-    return `${this.worker()} is braking with the regenerative braking system.`
-}
+    }
+    // La funcion brake reemplaza a la funcion brake de la clase Car
+    brake(): string {
+        return `${this.worker()} is braking with the regenerative braking system.`
+    }
 }
 
-let spark = new ElectricCar('Spark Motors','silver', 124, 2);
+let spark = new ElectricCar('Spark Motors', 'silver', 124, 2);
 let eCar = new ElectricCar('Electric Car Co.', 'black', 263);
 console.log(eCar.doors);
 spark.charge();
