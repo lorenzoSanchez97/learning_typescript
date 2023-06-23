@@ -1,13 +1,15 @@
 class Car {
-    _make: string;
-    _color: string;
-    _doors: number;
+    private static numberOfCars: number = 0;
+    private _make: string;
+    private _color: string;
+    private _doors: number;
 
     constructor(make: string, color: string, doors = 4) {
     this._make = make;
     this._color = color;
     if ((doors % 2) === 0) {
         this._doors = doors;
+        Car.numberOfCars++;
     } else {
         throw new Error('Doors must be an even number');
     }
@@ -51,8 +53,11 @@ class Car {
         return `${this.worker()} is turning ${direction}`;
     }
     // This function performs work for the other method functions
-    worker(): string {
+    private worker(): string {
         return this._make;
+    }
+    public static getNumberOfCars(): number {
+        return Car.numberOfCars;
     }
 }
 
@@ -66,6 +71,8 @@ let myCar1 = new Car("Cool car company", "Blue", 2)
 // let myCar3 = new Car("Galaxy motors", "grey")
 // console.log(myCar3.doors);
 
-console.log(myCar1.accelerate(35));
-console.log(myCar1.brake());
-console.log(myCar1.turn('right'));
+// console.log(myCar1.accelerate(35));
+// console.log(myCar1.brake());
+// console.log(myCar1.turn('right'));
+
+console.log(Car.getNumberOfCars());
