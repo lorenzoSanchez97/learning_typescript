@@ -1,8 +1,17 @@
 "use strict";
-function processIdentity(value, message) {
-    console.log(message);
-    return value;
+// interface ProcessIdentity <T, U> {
+//     (value: T, message: U) : T;
+//     }
+class processIdentity {
+    constructor(val, msg) {
+        this.value = val;
+        this.message = msg;
+    }
+    process() {
+        console.log(this.message);
+        return this.value;
+    }
 }
-let processor = processIdentity;
-let returnNumber1 = processor(100, 'Hello!'); // OK
-// let returnString1 = processor('Hello!', 100);   // Type check error
+let processor = new processIdentity(100, 'Hello');
+processor.process(); // Displays 'Hello'
+processor.value = '100'; // Type check error
